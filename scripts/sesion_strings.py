@@ -225,20 +225,306 @@ himno.splitlines()
 'Luis, Hugo, Paco, Luis, Paco'.find('Paco')
 'Luis, Hugo, Paco, Luis, Paco'.find('Pedro')
 
-lista_apariciones = []
+frase = 'Paco, Luis, Hugo, Paco, Luis, Paco, Paco, Hugo, Paco, hola a Paco, adios'
 
-frase = 'Luis, Hugo, Paco, Luis, Paco, Paco, Hugo, Paco'
+# ¿En qué índices se encuentra la palabra "Paco": [12, 24, 30, 42]
+
+lista_apariciones = []
 
 N = len(frase)
 
 while frase.find("Paco") != -1:
-    lugar = frase.find("Paco")
-    lista_apariciones.append(lugar)
-    frase = frase.partition("Paco")[2].zfill(N) 
+    lista_apariciones.append(frase.find("Paco"))
+    frase = frase.partition("Paco")[2]  # , Luis, Paco, Paco, Hugo, Paco
+    frase = frase.zfill(N) #    000000000000, Luis, Paco, Paco, Hugo, Paco
+    
+lista_apariciones    
+    
+#%%
+
+## index
+"Luis, Alberto, Miguel".find("Paco")
 
 
+"Luis, Alberto, Miguel".index("Miguel")
+
+"Luis, Alberto, Miguel".index("Paco")
+
+'Luis, Hugo, Paco, Luis, Paco, Paco, Hugo, Paco, hola a Paco, adios'.index("Paco")
+'Luis, Hugo, Paco, Luis, Paco, Paco, Hugo, Paco, hola a Paco, adios'.index("Héctor")
+
+#%%
+
+### replace
+
+'Luis, Hugo, Paco, Luis'.replace('Luis', 'Juan Antonio')
+'Luis, Hugo, Paco, Luis'.replace('Pedro', 'Juan')
+
+#%%
+
+### count()
+
+"Hola, amigos.". count("a")
+
+
+frase = 'Paco, Luis, Hugo, Paco, Luis, Paco, Paco, Hugo, Paco, hola a Paco, adios'
+
+# ¿En qué índices se encuentra la palabra "Paco": [0, 18, 30, 36, 48, 61]
+
+lista_apariciones = []
+
+N = len(frase)
+
+while frase.count("Paco") != 0:
+    lista_apariciones.append(frase.find("Paco"))
+    frase = frase.partition("Paco")[2]  # , Luis, Paco, Paco, Hugo, Paco
+    frase = frase.zfill(N) #    000000000000, Luis, Paco, Paco, Hugo, Paco
+    
 lista_apariciones
 
+
+"Hola, amigos.".count("Héctor")
+
+
+cancion = "Ay amor mío, qué terriblemente absurdo es estar vivo"
+cancion.count("qué terriblemente")
+
+
+#%%
+
+## startswith
+
+
+"Hola, amigos.".startswith("la")
+"Hola, amigos.".startswith("Hol")
+
+
+######## nombre, apellido, calculo1, calculo2, indice1, indice2, indice3, tipo1, tipo2, tipo3
+
+
+nombres_columnas = ["nombre", "apellido", "calculo1","tipo1", "calculo2", 
+                    "indice1", "indice2", "tipo2","indice3", "tipo3"]
+
+columnas_delitos_graves = []
+
+
+for texto in nombres_columnas:
+    if texto.startswith("tipo") == True:
+        columnas_delitos_graves.append(texto)
+        
+columnas_delitos_graves
+
+
+### Encontrar cuántas vocales tiene una frase
+
+vocales = ["a","e","i","o","u","á","é","í","ó","ú"]
+
+frase = "Estoy tomando el cúrso de pythOn desde cero"
+
+mis_vocales = []
+
+for letra in frase:
+    if letra.lower() in vocales:
+        mis_vocales.append(letra)
+        
+len(mis_vocales)
+set(mis_vocales)
+
+conteos = []
+
+for vocal in vocales:
+    conteos.append(frase.count(vocal) + frase.count(vocal.upper()))
+    
+sum(conteos)
+
+#%%
+
+## endswith()
+
+"Hola, amigos.".endswith("Hola")
+"Hola, amigos.".endswith("gos.")
+
+#%%
+## isalnum()
+## 0123456789 y las letras 
+
+"@#%&".isalnum()
+
+
+"Héctor14Luis".isalnum()
+
+"Héctor14Lu is".isalnum()
+
+"Héctor+14Luis".isalnum()
+
+
+intentos = 0
+
+while intentos < 3:
+    contraseña = input("Crea tu contraseña. Solo puede tener caracteres alfanuméricos: ")
+    if contraseña.isalnum() == False:
+        print("Esa contraseña no cumple el requerimento. Intenta de nuevo")
+    else:
+        print("Contraseña válida")
+        break
+    intentos += 1
+    
+#%%
+
+# isalpha()
+
+"@#%&".isalpha()
+
+"Héctor12".isalpha()
+
+"Héctor Manuel".isalpha()
+
+"PepePecasPicaPapas".isalpha()
+
+#%%
+
+# isnumeric()
+
+'0x1a'.isnumeric()
+
+'-22.1'.isnumeric()
+
+'-221'.isnumeric()
+
+'221'.isnumeric()
+
+#%%
+
+# isdecimal()
+
+'0x1a'.isdecimal()
+
+'-22.1'.isdecimal()
+
+'22.1'.isdecimal()
+
+'23'.isdecimal()
+
+'2²'.isdecimal()
+
+'2²'.isnumeric()
+
+'½'.isdecimal()
+
+#%% islower()
+
+'¡hola, amigos!'.islower()
+
+'¡hola, amiGos!'.islower()
+
+### isupper()
+
+'¡HOLA, AMIGOS!'.isupper()
+'¡HOLA, AmIGOS!'.isupper()
+
+### istitle()
+
+# "Hola a todos".title()
+
+# "hola a todos".capitalize()
+
+'¡HOLA, AMIGOS!'.istitle()
+
+"Hola, Amigos".istitle()
+
+"¡Hola, Amigos!".istitle()
+
+#%%
+
+# isprintable
+
+lineas = "Hugo.\nPaco.\nLuis."
+
+print(lineas)
+
+lineas.isprintable()
+
+espacios = "Hugo.\tPaco.\tLuis."
+
+print(espacios)
+
+espacios.isprintable()
+
+#%%
+
+# isspace()
+
+'   '.isspace()
+
+''.isspace()
+
+'a bc'.isspace()
+
+'                          '.isspace()
+
+#%%
+
+'Nombre'.isidentifier()
+
+Nombre = "Este es un texto"
+
+"Héctor Manuel".isidentifier()
+
+Héctor Manuel = "Este es un texto"
+
+"ab@c".isidentifier()
+
+ab@c = 1+4+2
+
+#%%
+
+trans = str.maketrans("áäàéëèíïìóöòúüù", "aaaeeeiiiooouuu")
+
+
+'Hólá amïgòs. ¿Cómö éstán?'.translate(trans)
+
+mi_frase = 'Hólá amïgòs. ¿CómÖ éstán?'
+
+# Cuántas vocales tiene
+
+vocales = ["a","e","i","o","u"]
+
+trans = str.maketrans("áäàéëèíïìóöòúüù", "aaaeeeiiiooouuu")
+frase_limpia = mi_frase.lower().translate(trans)
+
+frase_limpia
+
+mis_vocales = []
+
+for letra in frase_limpia:
+    if letra.lower() in vocales:
+        mis_vocales.append(letra)
+        
+len(mis_vocales)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
 
 
 
