@@ -5,7 +5,7 @@ import os
 
 os.chdir(r"C:\Users\Usuario\Documents\scidata\25_fun_py\serpientes y escaleras")
 
-# Inicializar Pygame
+'''Inicializar Pygame'''
 pygame.init()
 
 '''crear ventana del juego'''
@@ -39,7 +39,7 @@ serpientes= {k-1: v-1 for k, v in preserpientes.items()}
 escaleras= {k-1: v-1 for k, v in preescaleras.items()}
 
 
-# Variables del juego
+'''Variables del juego'''
 posicion_jugador = 0
 dado_valor = None  # Sin valor inicial
 juego_activo = True
@@ -77,7 +77,7 @@ def dibujar_mensaje_ganador():
     ventana.blit(texto, (VENTANA_ANCHO//2 - texto.get_width()//2, 
                          6))
 
-# Bucle principal
+'''Bucle principal'''
 running = True
 while running:
     reloj.tick(FPS)
